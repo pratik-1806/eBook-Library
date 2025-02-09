@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<!-- Global Loading Indicator -->
+<app-loading></app-loading>
+<!-- Outer container with a background -->
+<div class="min-h-screen bg-gray-100">
+  <!-- Navbar remains full width -->
+  <app-navbar></app-navbar>
+
+  <!-- Main content container: centered with restricted max width for laptops -->
+  <div class="w-full max-w-screen-lg mx-auto px-4 py-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

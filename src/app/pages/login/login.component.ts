@@ -1,15 +1,16 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -32,9 +33,11 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: (response) => {
           // Save the token in localStorage.
-          localStorage.setItem('token', response.token);
+          localStorage.setItem('token', response.accessToken);
+          //saving user to localStorage
+          localStorage.setItem('user', JSON.stringify(response.user));
           // Navigate to a protected route (e.g., dashboard).
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           this.errorMessage = error.error.message || 'Login failed';
@@ -42,5 +45,4 @@ export class LoginComponent {
       });
     }
   }
-
 }

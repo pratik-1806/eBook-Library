@@ -1,0 +1,25 @@
+<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <!-- Logo (clickable to navigate to home) -->
+    <a routerLink="/home" class="text-xl font-bold hover:underline">BookApp</a>
+    
+    <!-- Navigation Links / User Info -->
+    <div class="space-x-4 flex items-center">
+      <!-- If the user is logged in, show their name and a logout button -->
+      <ng-container *ngIf="isLoggedIn(); else guestLinks">
+        <span class="mr-4 font-semibold">Welcome, {{ userName }}</span>
+        <button (click)="logout()" class="bg-red-500 px-3 py-1 rounded hover:bg-red-600">
+          Logout
+        </button>
+      </ng-container>
+
+      <!-- Template for guests: show Sign In and Sign Up links -->
+      <ng-template #guestLinks>
+        <a routerLink="/login" class="px-3 py-1 border border-white rounded hover:bg-white hover:text-blue-600">
+          Sign In
+        </a>
+        <a routerLink="/register" class="px-3 py-1 border border-white rounded hover:bg-white hover:text-blue-600">
+          Sign Up
+        </a>
+      </ng-template>
+    </div>
+  </nav>
