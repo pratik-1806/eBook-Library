@@ -95,7 +95,7 @@ export class BookDetailComponent implements OnInit {
   confirmDelete(): void {
     if (window.confirm('Are you sure you want to delete this book?')) {
       this.bookService.deleteBook(this.bookId).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => this.router.navigate(['/books']),
         error: (err) => console.error('Error deleting book:', err),
       });
     }

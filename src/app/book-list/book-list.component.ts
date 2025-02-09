@@ -31,10 +31,10 @@ userId: any;
   }
 
   openBook(bookId: string): void {
-    this.router.navigate(['/book', bookId]);
+    this.router.navigate(['/books', bookId]);
   }
 
   addBook(): void {
-    this.router.navigate(['/add-book']);
+    this.router.navigate(['/books/add']);
   }
 }

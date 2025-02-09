@@ -37,7 +37,7 @@ export class LoginComponent {
           //saving user to localStorage
           localStorage.setItem('user', JSON.stringify(response.user));
           // Navigate to a protected route (e.g., dashboard).
-          this.router.navigate(['/home']);
+          this.router.navigate(['/books']);
         },
         error: (error) => {
           this.errorMessage = error.error.message || 'Login failed';

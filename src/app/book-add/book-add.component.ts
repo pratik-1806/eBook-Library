@@ -40,7 +40,7 @@ export class BookAddComponent {
         formData.append('file', this.selectedFiles['file']);
       }
       this.bookService.createBook(formData).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => this.router.navigate(['/books']),
         error: (err) => console.error('Error creating book:', err)
       });
     }
